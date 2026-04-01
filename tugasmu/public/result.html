@@ -507,7 +507,7 @@ async function runFeature(){
   // 🔥 FLASHCARD
   if(feature === "flashcard"){
 
-    const res = await fetch("/generate-flashcard", {
+    const res = await fetch("/api/generate-flashcard", {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({text})
@@ -535,7 +535,7 @@ async function runFeature(){
 
     const text = localStorage.getItem("rawText");
 
-    const res = await fetch("/generate-quiz", {
+    const res = await fetch("/api/generate-quiz", {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body: JSON.stringify({ text })
@@ -567,7 +567,7 @@ async function generateQuiz(){
 
   const text = localStorage.getItem("rawText");
 
-  const res = await fetch("/generate-quiz", {
+  const res = await fetch("/api/generate-quiz", {
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify({ text })
