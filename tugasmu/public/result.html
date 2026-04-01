@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hasil - tugasmu.id</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body{
+      font-family:Segoe UI;
+      background:#f4f6fb;
+      padding:20px;
+    }
+
+    .editor{
+      min-height:200px;
+      padding:20px;
+      background:white;
+      border-radius:10px;
+      margin-bottom:20px;
+    }
+
+    .toolbar{
+      margin-bottom:15px;
+    }
+
+    .card{
+      background:white;
+      padding:15px;
+      border-radius:10px;
+      margin-top:15px;
+    }
+
+    button{
+      margin:5px;
+      padding:8px 12px;
+      border:none;
+      border-radius:8px;
+      background:#4f46e5;
+      color:white;
+      cursor:pointer;
+    }
+
+    /* FLASHCARD */
+    .flashcard {
+      width:200px;
+      height:120px;
+      perspective:1000px;
+      display:inline-block;
+      margin:10px;
+    }
+
+    .inner{
+      width:100%;
+      height:100%;
+      transition:transform 0.6s;
+      transform-style:preserve-3d;
+      position:relative;
+    }
+
+    .inner.flip{
+      transform:rotateY(180deg);
+    }
+
+.front, .back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  text-align:center;
+  backface-visibility:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
+  /* 🔥 FIX UTAMA */
+  overflow:hidden;
+  word-wrap:break-word;
+  font-size:14px;
+  line-height:1.4;
+  margin: 0;
+}
+
+    .back{
+      transform:rotateY(180deg);
+      background:#4f46e5;
+      color:white;
+    }
+
+    body{
+  margin:0;
+  font-family: 'Segoe UI', sans-serif;
+  background:#f4f6fb;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  padding:20px;
+  font-size:26px;
+  font-weight:bold;
+  background:#4f46e5;
+  color:white;
+  letter-spacing:1px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:40px auto;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom:20px;
+}
+
+/* EDITOR */
+.editor{
+  min-height:200px;
+  line-height:1.6;
+}
+
+/* TOOLBAR */
+.toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+/* BUTTON */
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#4f46e5;
+  color:white;
+  transition:0.2s;
+}
+
+button:hover{
+  background:#3730a3;
+  transform:translateY(-2px);
+}
+
+/* SELECT */
+select{
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+/* QUIZ BUTTON */
+.card button{
+  margin:5px;
+}
+
+.flashcard {
+  width:200px;
+  height:120px;
+  perspective:1000px;
+  display:inline-block;
+  margin:10px;
+}
+
+.inner{
+  width:100%;
+  height:100%;
+  transition:transform 0.6s;
+  transform-style:preserve-3d;
+  position:relative;
+}
+
+.inner.flip{
+  transform:rotateY(180deg);
+}
+
+.front, .back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+  text-align:center;
+  backface-visibility:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.front{
+  background:white;
+}
+
+.back{
+  transform:rotateY(180deg);
+  background:#4f46e5;
+  color:white;
+}
+
+.container{
+  max-width:900px;
+  margin:20px auto;
+  padding:15px;
+}
+
+.card{
+  padding:20px;
+  border-radius:16px;
+}
+
+
+@media (max-width:600px){
+
+  h2{
+    font-size:20px;
+  }
+
+  .card{
+    padding:15px;
+  }
+
+  button{
+    width:100%;
+    margin-top:5px;
+  }
+
+
+  select{
+    width:100%;
+  }
+}
+
+.toolbar{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+  overflow-x:auto; 
+  white-space:nowrap;
+  padding-bottom:5px;
+}
+
+.toolbar::-webkit-scrollbar{
+  height:5px;
+}
+
+.toolbar::-webkit-scrollbar-thumb{
+  background:#c7d2fe;
+  border-radius:10px;
+}
+
+.toolbar button{
+  background:#eef2ff;
+  color:#3730a3;
+  border:none;
+  padding:8px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.toolbar button:hover{
+  background:#c7d2fe;
+}
+
+.editor{
+  min-height:250px;
+  padding:20px;
+  line-height:1.6;
+}
+
+@media (max-width:600px){
+
+  .toolbar select{
+    font-size:12px;
+    padding:4px 6px;
+    min-width:80px;
+  }
+
+  .toolbar input[type="color"]{
+    width:30px;
+    height:30px;
+    padding:2px;
+  }
+
+  .toolbar button{
+    padding:6px 8px;
+    font-size:12px;
+  }
+
+}
+
+.editor h2{
+  color:#4f46e5;
+  margin-bottom:10px;
+}
+
+.editor h3{
+  margin-top:15px;
+}
+
+.editor p{
+  margin:10px 0;
+}
+
+.editor ul{
+  padding-left:20px;
+}
+
+.editor li{
+  margin-bottom:6px;
+}
+
+.quiz-card{
+  background:#002e6f;
+  color:rgb(255, 255, 255);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  animation:fadeIn 0.4s ease;
+}
+
+.option{
+  display:block;
+  background:#4f46e5;
+  padding:12px;
+  border-radius:10px;
+  margin:10px 0;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.option{
+  font-weight:500;
+}
+
+.option:hover{
+  background:#374151;
+}
+
+.correct{
+  background:#16a34a !important;
+}
+
+.wrong{
+  background:#dc2626 !important;
+}
+
+.fade-out{
+  animation:fadeOut 0.4s forwards;
+}
+
+.fade-in{
+  animation:fadeIn 0.4s forwards;
+}
+
+@keyframes fadeOut{
+  to{opacity:0; transform:translateY(10px);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1;}
+}
+
+#extraOutput{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px; 
+}
+
+.pdf-btn{
+  background:#16a34a;
+  color:white;
+  padding:10px 16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  margin-bottom:15px;
+}
+
+.pdf-btn:hover{
+  background:#15803d;
+}
+
+@media print {
+
+  body{
+    background:white;
+  }
+
+  .toolbar,
+  .pdf-btn,
+  select,
+  button{
+    display:none !important;
+  }
+
+  #editor{
+    box-shadow:none;
+    border:none;
+  }
+
+}
+
+#editor{
+  max-width:800px;
+  margin:auto;
+}
+
+  </style>
+</head>
+
+
+<body>
+
+<h2>Ringkasan AI</h2>
+
+<div class="toolbar">
+
+  <!-- TEXT STYLE -->
+  <button onclick="formatText('bold')">B</button>
+  <button onclick="formatText('italic')">I</button>
+  <button onclick="formatText('underline')">U</button>
+
+  <!-- ALIGN -->
+  <button onclick="formatText('justifyLeft')">⬅</button>
+  <button onclick="formatText('justifyCenter')">⬇</button>
+  <button onclick="formatText('justifyRight')">➡</button>
+
+  <!-- LIST -->
+  <button onclick="formatText('insertUnorderedList')">•</button>
+  <button onclick="formatText('insertOrderedList')">1.</button>
+
+  <!-- FONT -->
+  <select onchange="changeFont(this.value)">
+    <option value="">Font</option>
+    <option value="Arial">Arial</option>
+    <option value="Times New Roman">Times</option>
+    <option value="Courier New">Mono</option>
+  </select>
+
+  <!-- SIZE -->
+  <select onchange="changeFontSize(this.value)">
+    <option value="3">Normal</option>
+    <option value="5">Besar</option>
+    <option value="6">Judul</option>
+  </select>
+
+  <!-- COLOR -->
+  <input type="color" onchange="changeColor(this.value)">
+
+  <!-- HIGHLIGHT -->
+  <button onclick="highlightText()">🖍</button>
+
+  <!-- CLEAR -->
+  <button onclick="formatText('removeFormat')">🧹</button>
+
+</div>
+
+<button onclick="exportPDF()" class="pdf-btn">⬇️ Download PDF</button>
+
+<div id="editor" class="editor" contenteditable="true"></div>
+
+<!-- 🔥 TOOLBAR -->
+<div class="toolbar">
+  <select id="featureSelect">
+    <option value="">Pilih Fitur</option>
+    <option value="flashcard">Flashcard</option>
+    <option value="quiz">Quiz</option>
+  </select>
+
+  <button onclick="runFeature()">Jalankan</button>
+</div>
+
+<!-- 🔥 OUTPUT -->
+<div id="extraOutput"></div>
+
+<script>
+
+let quizCount = 0;
+const MAX_QUIZ = 3;
+
+// 🔥 LOAD SUMMARY
+const summary = localStorage.getItem("summary");
+document.getElementById("editor").innerHTML = summary;
+
+console.log("ISI LOCALSTORAGE:", summary);
+
+// 🔥 RUN FEATURE
+async function runFeature(){
+  let feature = document.getElementById("featureSelect").value;
+  let output = document.getElementById("extraOutput");
+
+  output.innerHTML = "Loading...";
+
+ const text = localStorage.getItem("rawText");
+
+  // 🔥 FLASHCARD
+  if(feature === "flashcard"){
+
+    const res = await fetch("/generate-flashcard", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({text})
+    });
+
+    const data = await res.json();
+    let cards = JSON.parse(data.flashcards);
+
+    output.innerHTML = cards.map((c,i)=>`
+      <div class="flashcard" onclick="flipCard(${i})">
+        <div class="inner" id="card-${i}">
+          <div class="front">${c.term}</div>
+          <div class="back">${c.definition}</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // 🔥 QUIZ
+  if(feature === "quiz"){
+    if(feature === "quiz"){
+  quizCount = 0;
+  generateQuiz(); // 🔥 langsung munculin quiz pertama
+}
+
+    const text = localStorage.getItem("rawText");
+
+    const res = await fetch("/generate-quiz", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ text })
+    });
+
+    const data = await res.json();
+    let quiz;
+
+try {
+  quiz = JSON.parse(data.quiz);
+} catch (err) {
+  console.error("JSON ERROR:", data.quiz);
+
+  document.getElementById("extraOutput").innerHTML =
+    "❌ Gagal generate quiz (format AI error)";
+  return;
+}
+    renderQuiz(quiz);
+  }
+}
+
+async function generateQuiz(){
+
+  if(quizCount >= MAX_QUIZ){
+    document.getElementById("extraOutput").innerHTML =
+      "🎉 Kamu sudah menyelesaikan semua quiz!";
+    return;
+  }
+
+  const text = localStorage.getItem("rawText");
+
+  const res = await fetch("/generate-quiz", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ text })
+  });
+
+  const data = await res.json();
+
+  let quiz;
+
+  try {
+    quiz = JSON.parse(data.quiz);
+  } catch (err) {
+    console.error("JSON ERROR:", data.quiz);
+    return;
+  }
+
+  quizCount++;
+
+  renderQuiz(quiz);
+}
+
+// 🔥 FLIP
+function flipCard(i){
+  document.getElementById("card-"+i).classList.toggle("flip");
+}
+
+// 🔥 QUIZ CHECK
+
+function formatText(command){
+  document.execCommand(command, false, null);
+}
+
+function changeFont(font){
+  document.execCommand("fontName", false, font);
+}
+
+function changeFontSize(size){
+  document.execCommand("fontSize", false, size);
+}
+
+function changeColor(color){
+  document.execCommand("foreColor", false, color);
+}
+
+function highlightText(){
+  document.execCommand("hiliteColor", false, "yellow");
+}
+
+function renderQuiz(quiz){
+
+  const output = document.getElementById("extraOutput");
+
+  output.innerHTML = `
+  <div class="quiz-card" id="quizCard">
+
+    <h3>Quiz ${quizCount} / ${MAX_QUIZ}</h3>
+    <h3>${quiz.question}</h3>
+    
+    ${quiz.options.map((opt, i)=>{
+      const letter = ["A","B","C","D"][i];
+      return `<div class="option" onclick="selectAnswer('${letter}', this)">
+        ${letter}. ${opt}
+      </div>`;
+    }).join("")}
+
+  </div>
+  `;
+
+  window.currentQuiz = quiz;
+}
+
+function selectAnswer(selected, el){
+
+  const quiz = window.currentQuiz;
+  const options = document.querySelectorAll(".option");
+
+  // disable klik ulang
+  options.forEach(opt => opt.style.pointerEvents="none");
+
+  if(selected === quiz.answer){
+    el.classList.add("correct");
+  }else{
+    el.classList.add("wrong");
+
+    // tandain jawaban benar
+    options.forEach(opt=>{
+      if(opt.innerText.startsWith(quiz.answer)){
+        opt.classList.add("correct");
+      }
+    });
+  }
+
+  setTimeout(()=>{
+    showResult(selected === quiz.answer, quiz);
+  }, 1200);
+}
+
+function showResult(isCorrect, quiz){
+
+  const card = document.getElementById("quizCard");
+
+  card.classList.add("fade-out");
+
+  setTimeout(()=>{
+
+    card.innerHTML = `
+      <h2>${isCorrect ? "✅ Benar!" : "❌ Salah!"}</h2>
+
+      <p style="margin:10px 0">${quiz.explanation}</p>
+
+      ${
+        quizCount < MAX_QUIZ
+        ? `<button onclick="nextQuiz()">Next Quiz ➡️</button>`
+        : `<button onclick="finishQuiz()">Selesai 🎉</button>`
+      }
+
+    `;
+
+    card.classList.remove("fade-out");
+    card.classList.add("fade-in");
+
+  }, 400);
+}
+
+async function nextQuiz(){
+  document.getElementById("quizCard").innerHTML = "⏳ Generating next quiz...";
+  await generateQuiz();
+}
+
+function retryQuiz(){
+  renderQuiz(window.currentQuiz);
+}
+
+function exportPDF(){
+  window.print();
+}
+
+function finishQuiz(){
+  document.getElementById("extraOutput").innerHTML =
+    "🎉 Kamu sudah menyelesaikan semua quiz!";
+}
+
+</script>
+
+</body>
+</html>
